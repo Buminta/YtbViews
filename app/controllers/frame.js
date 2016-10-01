@@ -15,6 +15,7 @@ APP.controller('FrameCtrl', function ($rootScope, $scope, $mdDialog){
   };
 
   $scope.onPlayerReady = function(event) {
+    event.target.setLoop(true);
     event.target.mute();
   };
 
@@ -39,12 +40,21 @@ APP.controller('FrameCtrl', function ($rootScope, $scope, $mdDialog){
   }
 
   $scope.setPlaylist = function(list){
-    $scope.player.cuePlaylist(
+    if($scope.player) $scope.player.cuePlaylist(
       list,
       0,
       0,
       "small"
       );
+  };
+
+  $scope.setPlayVideo = function(id){
+    if($scope.player) $scope.player.cueVideoById(
+      id,
+      0,
+      "small"
+      );
+
   };
   $scope.list = {
     ids: [],
@@ -75,9 +85,18 @@ APP.controller('FrameCtrl', function ($rootScope, $scope, $mdDialog){
     if($scope.timeout) clearTimeout($scope.timeout);
     if (event.data == YT.PlayerState.PLAYING) {
       $scope.isPlaying = true;
+      var time = $scope.list.maxTimeDuration;
+      var timeSeek = $scope.player.getDuration() - time/1000;
+      if(timeSeek < 0) timeSeek = 0;
+      if(time && time > 0 && $scope.player.getCurrentTime() < timeSeek) {
+        $scope.player.seekTo(timeSeek);
+      }
+    }
+    if(event.data == YT.PlayerState.ENDED){
+      $scope.isPlaying = false;
       $scope.timeout = setTimeout(function(){
-        event.target.nextVideo();
-      }, $scope.list.maxTimeDuration?$scope.list.maxTimeDuration:null);
+        $scope.player.playVideoAt(0);
+      }, 500);
     }
   };
   $scope.$on("$destroy", function(){
