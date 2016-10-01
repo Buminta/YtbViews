@@ -1,0 +1,33 @@
+{
+  "name": "ytb-views",
+  "version": "1.0.0",
+  "description": "Youtube views application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electron/electron-quick-start.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/electron/electron-quick-start/issues"
+  },
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "devDependencies": {
+    "electron": "^1.3.4",
+    "electron-packager": "^8.1.0",
+    "grunt": "^0.4.5",
+    "grunt-electron": "^5.0.0",
+    "grunt-electron-installer": "^2.1.0",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}

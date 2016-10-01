@@ -1,0 +1,11 @@
+<div>
+  <div class="btn btn-success form-control" style="position: fixed; top: 0; z-index: 99;" ng-click="addFrame()">Add Frame</div>
+  <br/>
+  <br/>
+  <div class="thumbnail" style="display: inline-block; position: relative; margin: 10px;" ng-repeat="item in list_frame">
+    <frame-video id="item.id">
+    
+    </frame-video>
+    <span class="btn btn-warning" style="position: absolute; top: -10px; right: -10px;" ng-click="closeFrame($index)">x</span>
+  </div>
+</div>

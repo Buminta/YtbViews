@@ -1,0 +1,5 @@
+<div style="padding: 10px;">
+  <input ng-model="time" ng-change="update(list, time)" class="form-control" placeholder="Max time for play (s)" />
+  <textarea class="form-control" ng-model="list" ng-change="update(list, time)" placeholder="List video ids"></textarea>
+  <div class="btn btn-success form-control" ng-click="close()">OK</div>
+</div>
